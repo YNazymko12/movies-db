@@ -1,10 +1,12 @@
 import { Action, Reducer } from 'redux';
+import topRatedData from '../topRated.json';
 
 export interface Movie {
   id: number;
   title: string;
   popularity: number;
   overview: string;
+  voteAverage: number;
 }
 
 interface MovieState {
@@ -12,27 +14,13 @@ interface MovieState {
 }
 
 const initialState: MovieState = {
-  top: [
-    { id: 1, title: 'Inception', popularity: 98, overview: 'Dreams...' },
-    {
-      id: 2,
-      title: 'The Godfather',
-      popularity: 97,
-      overview: 'The Godfather...',
-    },
-    {
-      id: 3,
-      title: 'The Dark Knight',
-      popularity: 96.5,
-      overview: 'Batman...',
-    },
-    {
-      id: 4,
-      title: 'The Godfather Part II',
-      popularity: 96,
-      overview: 'part II...',
-    },
-  ],
+  top: topRatedData.results.map((result: any) => ({
+    id: result.id,
+    title: result.title,
+    popularity: result.popularity,
+    overview: result.overview,
+    voteAverage: result.vote_average,
+  })),
 };
 
 const moviesReducer: Reducer<MovieState, Action> = (state, action) => {

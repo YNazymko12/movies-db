@@ -20,6 +20,7 @@ function Movies({ movies }: Props) {
             title={m.title}
             overview={m.overview}
             popularity={m.popularity}
+            voteAverage={m.voteAverage}
           />
         ))}
       </div>

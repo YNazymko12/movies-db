@@ -5,14 +5,22 @@ interface MovieCardProps {
   title: string;
   overview: string;
   popularity: number;
+  voteAverage: number;
 }
 
-export function MovieCard({ id, title, overview, popularity }: MovieCardProps) {
+export function MovieCard({
+  id,
+  title,
+  overview,
+  popularity,
+  voteAverage,
+}: MovieCardProps) {
   return (
     <div className="Movies-card">
       <Link to={`/movies/${id}`}>{title}</Link>
       <div className="Movies-card-overview">{overview}</div>
       <div className="Movies-card-popularity">{popularity}</div>
+      <div>{voteAverage}</div>
     </div>
   );
 }
